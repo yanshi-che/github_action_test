@@ -2,10 +2,10 @@ name: pull_request_comment_test
 
 on:
   issue_comment:
-    types: [created,edited]
-
+  
   pull_request_review:
-    types: [submitted]
+   
+  pull_request_review_comment:
 
   workflow_dispatch:
 
@@ -19,6 +19,13 @@ jobs:
           echo commented $NUMBER
         env:
           NUMBER: ${{ github.event.issue.number }}
+
+  pr_review:
+    if: ${{ github.event.issue.reviewed }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "This PR was reviewd"
 
   pr_approve:
     if: github.event.review.state == 'approved'
