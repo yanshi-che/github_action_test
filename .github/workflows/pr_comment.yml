@@ -1,4 +1,4 @@
-name: pull_request_comment_test
+name: pr_comment_test
 
 on:
   issue_comment:
