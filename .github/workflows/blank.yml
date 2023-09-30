@@ -24,7 +24,7 @@ jobs:
           NUMBER: ${{ github.event.issue.number }}
 
   pr_review:
-    if: ${{ github.event.issue.reviewed }}
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
       - run: |
