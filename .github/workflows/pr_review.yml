@@ -1,0 +1,15 @@
+name: pull_request_comment_test
+
+on:
+  pull_request_review_comment:
+     types: [created, edited, deleted]
+
+  workflow_dispatch:
+
+jobs:
+  pr_review:
+    if: github.event.review.state == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "This PR was reviewd"
